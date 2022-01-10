@@ -14,7 +14,7 @@ func TestSen(t *testing.T) {
 			select {
 			case <-ti.C:
 				fmt.Println(time.Now().Second())
-				if time.Now().Second()%5 == 0 {
+				if time.Now().Second()%2 == 0 {
 					panic("123312")
 				}
 			default:
@@ -23,9 +23,5 @@ func TestSen(t *testing.T) {
 		}
 	})
 
-	for {
-		select {
-
-		}
-	}
+	time.Sleep(10 * time.Second)
 }

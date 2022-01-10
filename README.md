@@ -1,5 +1,7 @@
 # watcher any for Golang
 
+[![Go Tests](https://github.com/goxtools/watcher/actions/workflows/go.test.yml/badge.svg)](https://github.com/goxtools/watcher/actions/workflows/go.test.yml)
+
 # Installation
 
 ```go
