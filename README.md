@@ -1,5 +1,7 @@
 # watcher any for Golang
 
+[![Go Tests](https://github.com/goxtools/watcher/actions/workflows/go.test.yml/badge.svg)](https://github.com/goxtools/watcher/actions/workflows/go.test.yml)
+
 # Installation
 
 ```go
@@ -14,7 +16,7 @@ go get github.com/goxtools/watcher@v0.0.1
 - for {
 -    ch <- 1
 -    go func(channel chan int, c mq.Consumer) {
--        defer gorecover.GoRecover(context.Background(), c.GetConsumerName()+"job异常")
+-        defer gorecover.GoRecover(context.Background(), c.GetConsumerName()+"job err")
 -        ctx := new(Context)
 -        if err := c.Consumer(ctx); err != nil {
 -            <-channel
