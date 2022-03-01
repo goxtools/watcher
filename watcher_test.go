@@ -1,7 +1,6 @@
 package watcher
 
 import (
-	"fmt"
 	"math/rand"
 	"testing"
 	"time"
@@ -20,7 +19,6 @@ func TestWatcher(t *testing.T) {
 				panic("crash")
 			}
 			time.Sleep(500 * time.Millisecond)
-			fmt.Printf("%#v\n", w)
 		}
 	})
 }

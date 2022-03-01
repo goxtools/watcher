@@ -37,8 +37,8 @@ func (w *Watcher) on(f func(args ...interface{})) {
 				zap.String("sleep", w.retryDelayTime.String()),
 				zap.Any("e", e),
 			)
-			w.currentRetryTime--
-			if w.currentRetryTime < 0 {
+			atomic.AddInt32(&w.currentRetryTime, -1)
+			if atomic.LoadInt32(&w.currentRetryTime) < 0 {
 				log.Debug("The number of retries is gone, stop retrying")
 				return
 			}
