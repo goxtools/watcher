@@ -1,6 +1,7 @@
 package watcher
 
 import (
+	"github.com/goxtools/watcher/internal"
 	"github.com/goxtools/watcher/log"
 	"go.uber.org/zap"
 	"sync/atomic"
@@ -36,6 +37,7 @@ func (w *Watcher) on(f func(args ...interface{})) {
 			log.Debug("[Watcher] Watcher Anomaly detected",
 				zap.String("sleep", w.retryDelayTime.String()),
 				zap.Any("e", e),
+				zap.String("stack", internal.Stack()),
 			)
 			atomic.AddInt32(&w.currentRetryTime, -1)
 			if atomic.LoadInt32(&w.currentRetryTime) < 0 {

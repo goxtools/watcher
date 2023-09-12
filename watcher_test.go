@@ -13,12 +13,14 @@ func TestWatcher(t *testing.T) {
 	//	after 10 seconds of stable operation,
 	//	reset the number of retries
 	w := NewWatcher(10, time.Second*1, time.Second*10)
-	w.On(func(args ...interface{}) {
-		for {
-			if rand.Int()%9 == 0 {
-				panic("crash")
-			}
-			time.Sleep(500 * time.Millisecond)
+	w.On(isOk)
+}
+
+func isOk(args ...interface{}) {
+	for {
+		if rand.Int()%9 == 0 {
+			panic("crash")
 		}
-	})
+		time.Sleep(500 * time.Millisecond)
+	}
 }
